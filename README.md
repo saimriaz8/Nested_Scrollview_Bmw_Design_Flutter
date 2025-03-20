@@ -2,8 +2,6 @@
 
 A sleek and modern **BMW M5** UI built with Flutter. This project demonstrates a beautiful car showcase with **nested scrolling, dynamic content, and a clean automotive-themed design**.
 
-![BMW M5 Showcase](https://images.unsplash.com/photo-1552234816-0ea7b995a55c?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
-
 ---
 
 ## 🚀 Features
