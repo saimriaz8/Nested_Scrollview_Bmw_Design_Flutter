@@ -41,29 +41,52 @@ class _MyHomePageState extends State<MyHomePage> {
         body: Center(
             child: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled) {
-            return [
-              SliverAppBar(
-                title: const Text(
-                      'BMW',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontFamily: 'jost',
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold),
+          return [
+            SliverAppBar(
+              expandedHeight: 600,
+              pinned: true,
+              backgroundColor: const Color(0xff2C2C2C),
+              flexibleSpace: LayoutBuilder(
+                builder: (context, constraints) {
+                  double maxExtent = 600; // Maximum height when expanded
+                  double minExtent = kToolbarHeight; // Minimum height when collapsed
+                  double currentExtent = constraints.biggest.height;
+                  double scale = (currentExtent - minExtent) / (maxExtent - minExtent);
+
+                  return FlexibleSpaceBar(
+                    title: const Align(
+                      alignment: Alignment.topCenter,
+                      child:  Padding(
+                        padding: EdgeInsets.only(top: 11),
+                        child: Text(
+                          'BMW',
+                          style: TextStyle(
+                            fontFamily: 'jost',
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white
+                          ),
+                        ),
+                      ),
                     ),
-                    pinned: true,
-                    backgroundColor: const Color(0xff2C2C2C),
                     centerTitle: true,
-                expandedHeight: 600,
-                flexibleSpace: FlexibleSpaceBar(
-                  background: Image.network(
-                    coverImage,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              )
-            ];
-          },
+                    background: Stack(
+                      fit: StackFit.expand,
+                      children: [
+                        Transform.scale(
+                          scale: 1.0 + (scale * 0.2), // Scale effect based on scroll
+                          child: Image.network(
+                            'https://images.unsplash.com/photo-1552234816-0ea7b995a55c?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ),
+          ];
+        },
           body: SingleChildScrollView(
             physics: const NeverScrollableScrollPhysics(),
             child: Container(
