@@ -75,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         Transform.scale(
                           scale: 1.0 + (scale * 0.2), // Scale effect based on scroll
                           child: Image.network(
-                            'https://images.unsplash.com/photo-1552234816-0ea7b995a55c?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                            coverImage,
                             fit: BoxFit.cover,
                           ),
                         ),
